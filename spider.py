@@ -4,7 +4,7 @@ import asyncio
 
 
 class Spider:
-    def __init__(self, url, keep_days=10):
+    def __init__(self, url, keep_days=7):
         self.url = url
         self.keep_days = keep_days
         self.headers = {
@@ -22,7 +22,7 @@ class Spider:
         response.encoding = response.apparent_encoding
         return response.text
 
-    def parser(self):
+    def parser(self, url):
         pass
 
     @asyncio.coroutine
