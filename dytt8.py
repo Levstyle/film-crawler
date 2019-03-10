@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from spider import Spider
 from datetime import datetime
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urljoin
 
 
 class Dytt8(Spider):
@@ -12,7 +12,7 @@ class Dytt8(Spider):
         soup = BeautifulSoup(text, 'html.parser')
         tables = soup.select('div.co_content8 table')
         results = []
-        base_url = urlparse(self.url).netloc
+
         for mv in tables:
             title = mv.select('a.ulink')[0].text
             url = mv.select('a.ulink')[0].attrs['href']
@@ -22,10 +22,6 @@ class Dytt8(Spider):
                 results.append(film)
 
         return results
-
-    def __call__(self):
-        text = self.crawl(self.url)
-        return self.parser(text)
 
 
 if __name__ == "__main__":

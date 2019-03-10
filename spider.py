@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+import asyncio
 
 
 class Spider:
@@ -23,3 +24,7 @@ class Spider:
 
     def parser(self):
         pass
+
+    @asyncio.coroutine
+    def __call__(self):
+        return self.parser(self.crawl(self.url))

@@ -24,10 +24,6 @@ class SeeHD(Spider):
 
         return results
 
-    def __call__(self):
-        text = self.crawl(self.url)
-        return self.parser(text)
-
 
 if __name__ == "__main__":
     SeeHD()()
