@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from spider import Spider
 from datetime import datetime
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 
 
 class Dytt8(Spider):
@@ -16,10 +16,8 @@ class Dytt8(Spider):
         for mv in tables:
             title = mv.select('a.ulink')[0].text
             url = mv.select('a.ulink')[0].attrs['href']
-            # print(title, "{}/{}".format(base_url, url))
             date = mv.find("font").text.split()[0][3:]
-
-            film = dict(date=date, url="{}/{}".format(base_url, url), title=title)
+            film = dict(date=date, url=urljoin(self.url, url), title=title)
             if (self.now - datetime.strptime(date, "%Y-%m-%d")).days <= self.keep_days:
                 results.append(film)
 
