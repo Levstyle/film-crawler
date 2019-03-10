@@ -1,4 +1,5 @@
 from seehd import SeeHD
+from dytt8 import Dytt8
 from prettytable import PrettyTable
 
 
@@ -7,11 +8,10 @@ def main():
     movies.align["电影名"] = "l"
     movies.align["地址"] = "c"
     movies.align["时间"] = "c"
-    movies.sortby = "时间"
 
-    for movie in SeeHD()():
+    for movie in SeeHD()() + Dytt8()():
         movies.add_row([movie['title'], movie['url'], movie['date']])
-    print(movies)
+    print(movies.get_string(sortby='时间', reversesort=True))
 
 
 if __name__ == '__main__':
