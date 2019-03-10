@@ -9,7 +9,7 @@ import asyncio
 def main():
     movies = PrettyTable(["电影名", "地址", "时间"])
     movies.align["电影名"] = "l"
-    movies.align["地址"] = "c"
+    movies.align["地址"] = "l"
     movies.align["时间"] = "c"
 
     tasks = [
