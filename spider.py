@@ -27,4 +27,6 @@ class Spider:
 
     @asyncio.coroutine
     def __call__(self):
-        return self.parser(self.crawl(self.url))
+        result = self.parser(self.crawl(self.url))
+        print("{} is done!".format(self.url))
+        return result
